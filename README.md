@@ -1,24 +1,11 @@
-# README
+# Baukis2 - 顧客管理システム
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 説明
 
-Things you may want to cover:
+Baukis2 は企業向けの顧客管理システム（Ruby on Rails 6 の学習用サンプル）です。
 
-* Ruby version
+## システム要件
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Alpine 3.9
+* Ruby 2.5, 2.6
+* PostgreSQL 11
