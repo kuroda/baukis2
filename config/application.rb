@@ -40,5 +40,9 @@ module Baukis2
       g.assets false
       g.test_framework false
     end
+
+    config.exceptions_app = lambda do |env|
+      ErrorsController.action(:show).call(env)
+    end
   end
 end

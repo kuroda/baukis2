@@ -1,15 +1,15 @@
 class ErrorsController < ApplicationController
   layout "staff"
 
-  def not_found
-    render status: 404
-  end
+  TEMPLATES = {
+    404 => :not_found,
+    422 => :unprocessable_entity,
+    500 => :internal_server_error
+  }
 
-  def unprocessable_entity
-    render status: 422
-  end
-
-  def internal_server_error
-    render status: 500
+  def show
+    status = request.path_info[1..-1].to_i
+    status = 500 unless TEMPLATES[status]
+    render action: TEMPLATES[status], status: status
   end
 end
