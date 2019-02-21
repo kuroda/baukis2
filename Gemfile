@@ -7,6 +7,7 @@ gem "rails", "~> 6.0.0.beta1"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 3.11"
 gem "jbuilder", "~> 2.5"
+gem 'bcrypt', "~> 3.1.7"
 
 gem "bootsnap", ">= 1.1.0", require: false
 
@@ -27,5 +28,6 @@ group :test do
   gem "capybara", ">= 2.15"
   gem "selenium-webdriver"
   gem "chromedriver-helper"
+  gem "rspec-rails", "~> 3.8.2"
   gem "factory_bot", "~> 5.0.1"
 end
