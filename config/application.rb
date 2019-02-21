@@ -38,7 +38,9 @@ module Baukis2
       g.skip_routes true
       g.helper false
       g.assets false
-      g.test_framework false
+      g.test_framework :rspec
+      g.controller_specs false
+      g.view_specs false
     end
 
     config.exceptions_app = lambda do |env|
