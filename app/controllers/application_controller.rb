@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from Forbidden, with: :rescue403
   rescue_from IpAddressRejected, with: :rescue403
+  rescue_from ActiveRecord::RecordNotFound, with: :rescue404
 
   private def set_layout
     if params[:controller].match(%r{\A(staff|admin|customer)\b})
@@ -17,5 +18,9 @@ class ApplicationController < ActionController::Base
 
   private def rescue403(e)
     render "errors/forbidden", status: 403
+  end
+
+  private def rescue404(e)
+    render "errors/not_found", status: 404
   end
 end
