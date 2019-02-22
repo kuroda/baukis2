@@ -20,12 +20,14 @@ class Staff::SessionsController < Staff::Base
       flash.notice = "ログインしました。"
       redirect_to :staff_root
     else
+      flash.now.alert = "メールアドレスまたはパスワードが正しくありません。"
       render action: "new"
     end
   end
 
   def destroy
     session.delete(:staff_member_id)
+    flash.notice = "ログアウトしました。"
     redirect_to :staff_root
   end
 end
