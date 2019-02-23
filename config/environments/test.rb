@@ -53,4 +53,7 @@ Rails.application.configure do
     admin: { host: "baukis2.example.com", path: "admin" },
     customer: { host: "example.com", path: "mypage" }
   }
+
+  config.hosts << "baukis2.example.com"
+  config.hosts << "example.com"
 end
