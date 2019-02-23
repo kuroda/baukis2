@@ -84,4 +84,10 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.baukis2 = {
+    staff: { host: "baukis2.example.com", path: "" },
+    admin: { host: "baukis2.example.com", path: "admin" },
+    customer: { host: "example.com", path: "mypage" }
+  }
 end
