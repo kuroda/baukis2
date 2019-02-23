@@ -17,6 +17,14 @@ describe "ルーティング" do
     )
   end
 
+  example "顧客トップページ" do
+    expect(get: "http://example.com/mypage").to route_to(
+      host: "example.com",
+      controller: "customer/top",
+      action: "index"
+    )
+  end
+
   example "ホスト名が対象外ならroutableではない" do
     expect(get: "http://foo.example.jp").not_to be_routable
   end
