@@ -1,28 +1,29 @@
-class Staff::SessionsController < Staff::Base
+class Admin::SessionsController < Admin::Base
   def new
-    if current_staff_member
+    if current_administrator
       redirect_to :staff_root
     else
-      @form = Staff::LoginForm.new
+      @form = Admin::LoginForm.new
       render action: "new"
     end
   end
 
   def create
-    @form = Staff::LoginForm.new(params[:staff_login_form])
+    @form = Admin::LoginForm.new(params[:admin_login_form])
 
     if @form.email.present?
-      staff_member = StaffMember.find_by(email_for_index: @form.email.downcase)
+      administrator =
+        Administrator.find_by(email_for_index: @form.email.downcase)
     end
 
-    if Staff::Authenticator.new(staff_member).authenticate(@form.password)
-      if staff_member.suspended?
+    if Admin::Authenticator.new(administrator).authenticate(@form.password)
+      if administrator.suspended?
         flash.now.alert = "アカウントが停止されています。"
         render action: "new"
       else
-        session[:staff_member_id] = staff_member.id
+        session[:administrator_id] = administrator.id
         flash.notice = "ログインしました。"
-        redirect_to :staff_root
+        redirect_to :admin_root
       end
     else
       flash.now.alert = "メールアドレスまたはパスワードが正しくありません。"
@@ -31,8 +32,8 @@ class Staff::SessionsController < Staff::Base
   end
 
   def destroy
-    session.delete(:staff_member_id)
+    session.delete(:administrator_id)
     flash.notice = "ログアウトしました。"
-    redirect_to :staff_root
+    redirect_to :admin_root
   end
 end

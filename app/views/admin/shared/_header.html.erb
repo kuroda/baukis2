@@ -1,3 +1,12 @@
 <header>
   <span class="logo-mark">BAUKIS2</span>
+  <%= tag.span(flash.notice, class: "notice") if flash.notice %>
+  <%= tag.span(flash.alert, class: "alert") if flash.alert %>
+  <%=
+    if current_administrator
+      link_to "ログアウト", :admin_session, method: :delete
+    else
+      link_to "ログイン", :admin_login
+    end
+  %>
 </header>

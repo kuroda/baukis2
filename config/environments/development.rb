@@ -54,4 +54,13 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.baukis2 = {
+    staff: { host: "baukis2.example.com", path: "" },
+    admin: { host: "baukis2.example.com", path: "admin" },
+    customer: { host: "example.com", path: "mypage" }
+  }
+
+  config.hosts << "baukis2.example.com"
+  config.hosts << "example.com"
 end

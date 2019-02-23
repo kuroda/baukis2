@@ -5,11 +5,11 @@ $gray: #cccccc;
 $light_gray: #eeeeee;
 $very_light_gray: #fafafa;
 
-/* シアン系 */
+/* マゼンタ系 */
 
-$dark_cyan: #448888;
-$very_dark_cyan: darken($dark_cyan, 25%);
-$light_cyan: lighten($dark_cyan, 25%);
+$dark_magenta: #884488;
+$very_dark_magenta: darken($dark_magenta, 25%);
+$light_magenta: lighten($dark_magenta, 25%);
 
 /* 赤系 */
 $red: #cc0000;
