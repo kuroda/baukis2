@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  namespace :staff do
+  namespace :staff, path: "" do
     root "top#index"
     get "login" => "sessions#new", as: :login
     post "session" => "sessions#create", as: :session
