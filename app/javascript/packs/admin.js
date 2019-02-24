@@ -7,3 +7,5 @@ import "../stylesheets/admin/layout.scss";
 import "../stylesheets/admin/container.scss";
 import "../stylesheets/admin/sessions.scss";
 import "../stylesheets/admin/flash.scss";
+import "../stylesheets/admin/tables.scss";
+import "../stylesheets/admin/form.scss";
