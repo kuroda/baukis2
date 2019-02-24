@@ -1,5 +1,5 @@
-@import 'colors';
-@import 'dimensions';
+@import "colors";
+@import "dimensions";
 
 html, body {
   margin: 0;
@@ -7,7 +7,7 @@ html, body {
   height: 100%;
 }
 a {
-  color: $light_magenta;
+  color: $dark_magenta;
 }
 div#wrapper {
   position: relative;
