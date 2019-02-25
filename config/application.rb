@@ -46,7 +46,5 @@ module Baukis2
     config.exceptions_app = lambda do |env|
       ErrorsController.action(:show).call(env)
     end
-
-    config.action_controller.permit_all_parameters = true
   end
 end
