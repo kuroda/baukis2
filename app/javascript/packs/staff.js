@@ -7,3 +7,5 @@ import "../stylesheets/staff/layout.scss";
 import "../stylesheets/staff/container.scss";
 import "../stylesheets/staff/sessions.scss";
 import "../stylesheets/staff/flash.scss";
+import "../stylesheets/staff/tables.scss";
+import "../stylesheets/staff/form.scss";
