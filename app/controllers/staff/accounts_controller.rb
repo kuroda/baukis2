@@ -12,7 +12,8 @@ class Staff::AccountsController < Staff::Base
     @staff_member.assign_attributes(staff_member_params)
     if @staff_member.save
       flash.notice = "アカウント情報を更新しました。"
-      redirect_to :staff_account
+      # Rails 6.0.0.beta2 で allow_other_host オプションは不要となる。
+      redirect_to :staff_account, allow_other_host: true
     else
       render action: "edit"
     end
