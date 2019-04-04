@@ -49,11 +49,11 @@ Rails.application.configure do
   config.action_view.finalize_compiled_template_methods = false
 
   config.baukis2 = {
-    staff: { host: "baukis2.example.com", path: "" },
-    admin: { host: "baukis2.example.com", path: "admin" },
-    customer: { host: "example.com", path: "mypage" }
+    staff: { host: "baukis2.example.org", path: "" },
+    admin: { host: "baukis2.example.org", path: "admin" },
+    customer: { host: "example.org", path: "mypage" }
   }
 
-  config.hosts << "baukis2.example.com"
-  config.hosts << "example.com"
+  config.hosts << "baukis2.example.org"
+  config.hosts << "example.org"
 end
