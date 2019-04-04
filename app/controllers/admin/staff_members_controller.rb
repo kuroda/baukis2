@@ -1,4 +1,6 @@
 class Admin::StaffMembersController < Admin::Base
+  before_action :authorize
+
   def index
     @staff_members = StaffMember.order(:family_name_kana, :given_name_kana)
   end
@@ -42,6 +44,12 @@ class Admin::StaffMembersController < Admin::Base
     staff_member.destroy!
     flash.notice = "職員アカウントを削除しました。"
     redirect_to :admin_staff_members
+  end
+
+  private def authorize
+    unless current_administrator
+      redirect_to :admin_login
+    end
   end
 
   private def staff_member_params
