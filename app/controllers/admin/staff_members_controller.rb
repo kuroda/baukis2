@@ -20,8 +20,7 @@ class Admin::StaffMembersController < Admin::Base
     @staff_member = StaffMember.new(staff_member_params)
     if @staff_member.save
       flash.notice = "職員アカウントを新規登録しました。"
-      # allow_other_host: true は 6.0.0.beta2 で消す
-      redirect_to :admin_staff_members, allow_other_host: true
+      redirect_to :admin_staff_members
     else
       render action: "new"
     end
@@ -32,8 +31,7 @@ class Admin::StaffMembersController < Admin::Base
     @staff_member.assign_attributes(staff_member_params)
     if @staff_member.save
       flash.notice = "職員アカウントを更新しました。"
-      # allow_other_host: true は 6.0.0.beta2 で消す
-      redirect_to :admin_staff_members, allow_other_host: true
+      redirect_to :admin_staff_members
     else
       render action: "edit"
     end
