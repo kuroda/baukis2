@@ -6,7 +6,8 @@ describe Staff::AccountsController do
     let(:staff_member) { create(:staff_member) }
 
     before do
-      @request.session[:staff_member_id] = staff_member.id
+      session[:staff_member_id] = staff_member.id
+      session[:last_access_time] = 1.second.ago
     end
 
     example "email属性を変更する" do
