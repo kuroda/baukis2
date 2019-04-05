@@ -8,18 +8,6 @@ describe "職員による自分のアカウントの管理" do
   describe "情報表示" do
     let(:staff_member) { create(:staff_member) }
 
-    example "ログイン後ならページを表示" do
-      login_as(staff_member)
-      get staff_account_url
-      expect(response).to be_ok
-    end
-
-    example "ログイン前なら「ログイン」フォームへ遷移させる" do
-      get staff_account_url
-
-      expect(response).to redirect_to(staff_login_url)
-    end
-
     example "停止フラグがセットされたら強制的にログアウト" do
       login_as(staff_member)
       staff_member.update_column(:suspended, true)

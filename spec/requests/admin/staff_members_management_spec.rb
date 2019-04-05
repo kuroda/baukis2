@@ -11,18 +11,6 @@ describe "管理者による職員管理" do
   describe "一覧" do
     let(:staff_member) { create(:staff_member) }
 
-    example "ログイン後ならページを表示" do
-      login_as(administrator)
-      get admin_staff_members_url
-      expect(response).to be_ok
-    end
-
-    example "ログイン前なら「ログイン」フォームへ遷移させる" do
-      get admin_staff_members_url
-
-      expect(response).to redirect_to(admin_login_url)
-    end
-
     example "停止フラグがセットされたら強制的にログアウト" do
       login_as(administrator)
       administrator.update_column(:suspended, true)
