@@ -4,15 +4,45 @@ describe Admin::StaffMembersController, "ログイン前" do
   include_examples "a protected admin controller", "admin/staff_members"
 end
 
-describe Admin::StaffMembersController, type: :request do
+describe Admin::StaffMembersController do
   let(:params_hash) { attributes_for(:staff_member) }
   let(:administrator) { create(:administrator) }
 
-  before do
-    login_as(administrator)
+  describe "#index" do
+    let(:staff_member) { create(:staff_member) }
+
+    example "ログイン後ならページを表示" do
+      login_as(administrator)
+      get admin_staff_members_url
+      expect(response).to be_ok
+    end
+
+    example "ログイン前なら「ログイン」フォームへ遷移させる" do
+      get admin_staff_members_url
+
+      expect(response).to redirect_to(admin_login_url)
+    end
+
+    example "停止フラグがセットされたら強制的にログアウト" do
+      login_as(administrator)
+      administrator.update_column(:suspended, true)
+      get admin_staff_members_url
+      expect(response).to redirect_to(admin_root_url)
+    end
+
+    example "セッションタイムアウト" do
+      login_as(administrator)
+      travel_to Admin::Base::TIMEOUT.from_now.advance(seconds: 1)
+      get admin_staff_members_url
+      expect(response).to redirect_to(admin_login_url)
+    end
   end
 
   describe "#create" do
+    before do
+      login_as(administrator)
+    end
+
     example "職員一覧ページにリダイレクト" do
       post admin_staff_members_url, params: { staff_member: params_hash }
       expect(response).to redirect_to(admin_staff_members_url)
@@ -26,6 +56,10 @@ describe Admin::StaffMembersController, type: :request do
 
   describe "#update" do
     let(:staff_member) { create(:staff_member) }
+
+    before do
+      login_as(administrator)
+    end
 
     example "suspendedフラグをセットする" do
       params_hash.merge!(suspended: true)
