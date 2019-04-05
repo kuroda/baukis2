@@ -1,11 +1,11 @@
 require "rails_helper"
 
-describe Staff::AccountsController, "ログイン前" do
+describe "職員による自分のアカウントの管理", "ログイン前" do
   include_examples "a protected singular staff controller", "staff/accounts"
 end
 
-describe Staff::AccountsController do
-  describe "#show" do
+describe "職員による自分のアカウントの管理" do
+  describe "情報表示" do
     let(:staff_member) { create(:staff_member) }
 
     example "ログイン後ならページを表示" do
@@ -35,7 +35,7 @@ describe Staff::AccountsController do
     end
   end
 
-  describe "#update" do
+  describe "更新" do
     let(:params_hash) { attributes_for(:staff_member) }
     let(:staff_member) { create(:staff_member) }
 

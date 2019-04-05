@@ -1,14 +1,14 @@
 require "rails_helper"
 
-describe Admin::StaffMembersController, "ログイン前" do
+describe "管理者による職員管理", "ログイン前" do
   include_examples "a protected admin controller", "admin/staff_members"
 end
 
-describe Admin::StaffMembersController do
+describe "管理者による職員管理" do
   let(:params_hash) { attributes_for(:staff_member) }
   let(:administrator) { create(:administrator) }
 
-  describe "#index" do
+  describe "一覧" do
     let(:staff_member) { create(:staff_member) }
 
     example "ログイン後ならページを表示" do
@@ -38,7 +38,7 @@ describe Admin::StaffMembersController do
     end
   end
 
-  describe "#create" do
+  describe "新規登録" do
     before do
       login_as(administrator)
     end
@@ -54,7 +54,7 @@ describe Admin::StaffMembersController do
     end
   end
 
-  describe "#update" do
+  describe "更新" do
     let(:staff_member) { create(:staff_member) }
 
     before do
