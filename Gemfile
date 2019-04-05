@@ -33,8 +33,6 @@ group :test do
     gem lib, :git => "https://github.com/rspec/#{lib}.git", :branch => "master"
   end
 
-  gem "rails-controller-testing"
-
   gem "rspec-rails", git: "https://github.com/rspec/rspec-rails", branch: "4-0-dev"
 
   gem "factory_bot_rails", "~> 5.0.1"
