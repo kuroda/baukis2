@@ -16,6 +16,16 @@ class StaffMember < ApplicationRecord
   validates :family_name, :given_name, presence: true
   validates :family_name_kana, :given_name_kana, presence: true,
     format: { with: KATAKANA_REGEXP, allow_blank: true }
+  validates :start_date, presence: true, date: {
+    after_or_equal_to: Date.new(2000, 1, 1),
+    before: -> (obj) { 1.year.from_now.to_date },
+    allow_blank: true
+  }
+  validates :end_date, date: {
+    after: :start_date,
+    before: -> (obj) { 1.year.from_now.to_date },
+    allow_blank: true
+  }
 
   def password=(raw_password)
     if raw_password.kind_of?(String)
