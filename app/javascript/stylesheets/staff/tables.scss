@@ -19,7 +19,7 @@ div.table-wrapper {
         color: $very_light_gray;
       }
       th, td { padding: $narrow }
-      td.email, td.date { font-family: monospace; }
+      td.email, td.date, td.password { font-family: monospace; }
       td.boolean { text-align: center; }
       td.actions {
         text-align: center;

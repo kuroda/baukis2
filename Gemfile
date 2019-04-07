@@ -14,6 +14,8 @@ gem "bootsnap", ">= 1.1.0", require: false
 gem "webpacker"
 
 gem "kaminari", "~> 1.1.1"
+gem "date_validator", "~> 0.9.0"
+gem "valid_email2", "~> 3.0.1"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
