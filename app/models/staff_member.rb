@@ -5,6 +5,12 @@ class StaffMember < ApplicationRecord
     self.email_for_index = email.downcase if email
   end
 
+  KATAKANA_REGEXP = /\A[\p{katakana}\u{30fc}]+\z/
+
+  validates :family_name, :given_name, presence: true
+  validates :family_name_kana, :given_name_kana, presence: true,
+    format: { with: KATAKANA_REGEXP, allow_blank: true }
+
   def password=(raw_password)
     if raw_password.kind_of?(String)
       self.hashed_password = BCrypt::Password.create(raw_password)
