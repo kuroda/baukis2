@@ -1,10 +1,12 @@
-<% p = StaffMemberFormPresenter.new(f, self) %>
-<%= p.legend %>
-<%= p.text_field_block(:email, "メールアドレス", required: true) %>
-<%= p.password_field_block(:password, "パスワード", required: true) %>
-<%= p.full_name_block(:family_name, :given_name, "氏名", required: true) %>
-<%= p.full_name_block(:family_name_kana, :given_name_kana, "フリガナ",
-  required: true) %>
-<%= p.date_field_block(:start_date, "入社日", required: true) %>
-<%= p.date_field_block(:end_date, "退職日") %>
-<%= p.suspended_check_box %>
+<%= markup do |m|
+  p = StaffMemberFormPresenter.new(f, self)
+  m << p.legend
+  m << p.text_field_block(:email, "メールアドレス", required: true)
+  m << p.password_field_block(:password, "パスワード", required: true)
+  m << p.full_name_block(:family_name, :given_name, "氏名", required: true)
+  m << p.full_name_block(:family_name_kana, :given_name_kana, "フリガナ",
+    required: true)
+  m << p.date_field_block(:start_date, "入社日", required: true)
+  m << p.date_field_block(:end_date, "退職日")
+  m << p.suspended_check_box
+end %>
