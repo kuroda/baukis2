@@ -1,12 +1,13 @@
 <%= markup do |m|
   p = StaffMemberFormPresenter.new(f, self)
   m << p.legend
-  m << p.text_field_block(:email, "メールアドレス", required: true)
-  m << p.password_field_block(:password, "パスワード", required: true)
-  m << p.full_name_block(:family_name, :given_name, "氏名", required: true)
-  m << p.full_name_block(:family_name_kana, :given_name_kana, "フリガナ",
-    required: true)
-  m << p.date_field_block(:start_date, "入社日", required: true)
-  m << p.date_field_block(:end_date, "退職日")
+  p.with_options(required: true) do |q|
+    m << q.text_field_block(:email, "メールアドレス", size: 32)
+    m << q.password_field_block(:password, "パスワード", size: 32)
+    m << q.full_name_block(:family_name, :given_name, "氏名")
+    m << q.full_name_block(:family_name_kana, :given_name_kana, "フリガナ")
+    m << q.date_field_block(:start_date, "入社日")
+    m << q.date_field_block(:end_date, "退職日", required: false)
+  end
   m << p.suspended_check_box
 end %>
