@@ -1,10 +1,21 @@
 {
-  "license": "MIT",
+  "name": "baukis2",
+  "private": true,
   "dependencies": {
-    "@rails/webpacker": "3.5",
-    "rails-ujs": "^5.2.2"
+    "@rails/actioncable": "^6.0.0-alpha",
+    "@rails/activestorage": "^6.0.0-alpha",
+    "@rails/ujs": "^6.0.0-alpha",
+    "@rails/webpacker": "^4.0.7",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "postcss-cssnext": "^3.1.0",
+    "rails-ujs": "^5.2.3",
+    "turbolinks": "^5.2.0"
   },
+  "version": "0.1.0",
   "devDependencies": {
-    "webpack-dev-server": "2.11.2"
+    "webpack-dev-server": "^3.7.2"
   }
 }
