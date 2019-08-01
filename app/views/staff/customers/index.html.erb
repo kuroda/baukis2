@@ -1,0 +1,43 @@
+<% @title = "顧客管理" %>
+<h1><%= @title %></h1>
+
+<div class="table-wrapper">
+  <div class="links">
+    <%= link_to "新規登録", :new_staff_customer %>
+  </div>
+
+  <%= paginate @customers %>
+
+  <table class="listing">
+    <tr>
+      <th>氏名</th>
+      <th>フリガナ</th>
+      <th>メールアドレス</th>
+      <th>生年月日</th>
+      <th>性別</th>
+      <th>アクション</th>
+    </tr>
+    <% @customers.each do |c| %>
+      <% p = CustomerPresenter.new(c, self) %>
+      <tr>
+        <td><%= p.full_name %></td>
+        <td><%= p.full_name_kana %></td>
+        <td class="email"><%= p.email %></td>
+        <td class="date"><%= p.birthday %></td>
+        <td><%= p.gender %></td>
+        <td class="actions">
+          <%= link_to "詳細", [ :staff, c ] %> |
+          <%= link_to "編集", [ :edit, :staff, c ] %> |
+          <%= link_to "削除", [ :staff, c ], method: :delete,
+            data: { confirm: "本当に削除しますか？" } %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= paginate @customers %>
+
+  <div class="links">
+    <%= link_to "新規登録", :new_staff_customer %>
+  </div>
+</div>
