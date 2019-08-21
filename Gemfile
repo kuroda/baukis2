@@ -8,6 +8,7 @@ gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 3.11"
 gem "jbuilder", git: "https://github.com/rails/jbuilder"
 gem "bcrypt", "~> 3.1.7"
+gem "rails-i18n", "~> 6.0.0.beta1"
 
 gem "bootsnap", ">= 1.1.0", require: false
 
@@ -31,7 +32,7 @@ end
 group :test do
   gem "capybara", ">= 2.15"
   gem "selenium-webdriver"
-  gem "chromedriver-helper"
+  gem "webdrivers", "~> 3.0"
 
   %w[rspec-core rspec-expectations rspec-mocks rspec-support].each do |lib|
     gem lib, :git => "https://github.com/rspec/#{lib}.git", branch: "master"

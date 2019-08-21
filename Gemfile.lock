@@ -112,8 +112,6 @@ GEM
       zeitwerk (~> 2.1, >= 2.1.8)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
-    archive-zip (0.12.0)
-      io-like (~> 0.3.0)
     bcrypt (3.1.13)
     bindex (0.8.1)
     bootsnap (1.4.4)
@@ -130,9 +128,6 @@ GEM
       xpath (~> 3.2)
     childprocess (1.0.1)
       rake (< 13.0)
-    chromedriver-helper (2.1.1)
-      archive-zip (~> 0.10)
-      nokogiri (~> 1.8)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
     date_validator (0.9.0)
@@ -150,7 +145,6 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
-    io-like (0.3.0)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.1.1)
@@ -211,6 +205,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
+    rails-i18n (6.0.0.beta1)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0.beta1, < 7)
     railties (6.0.0.rc2)
       actionpack (= 6.0.0.rc2)
       activesupport (= 6.0.0.rc2)
@@ -250,6 +247,10 @@ GEM
       activemodel (>= 6.0.0.a)
       bindex (>= 0.4.0)
       railties (>= 6.0.0.a)
+    webdrivers (3.9.4)
+      nokogiri (~> 1.6)
+      rubyzip (~> 1.0)
+      selenium-webdriver (~> 3.0)
     webpacker (4.0.7)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
@@ -269,7 +270,6 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
-  chromedriver-helper
   date_validator (~> 0.9.0)
   factory_bot_rails (~> 5.0.1)
   jbuilder!
@@ -278,6 +278,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 6.0.0.beta3)
+  rails-i18n (~> 6.0.0.beta1)
   rspec-core!
   rspec-expectations!
   rspec-mocks!
@@ -288,6 +289,7 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   valid_email2 (~> 3.0.1)
   web-console (>= 3.3.0)
+  webdrivers (~> 3.0)
   webpacker
 
 RUBY VERSION

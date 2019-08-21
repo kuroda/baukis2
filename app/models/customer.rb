@@ -1,10 +1,16 @@
 class Customer < ApplicationRecord
-  has_one :home_address, dependent: :destroy
-  has_one :work_address, dependent: :destroy
+  include EmailHolder
+  include PersonalNameHolder
 
-  before_validation do
-    self.email_for_index = email.downcase if email
-  end
+  has_one :home_address, dependent: :destroy, autosave: true
+  has_one :work_address, dependent: :destroy, autosave: true
+
+  validates :gender, inclusion: { in: %w(male female), allow_blank: true }
+  validates :birthday, date: {
+    after: Date.new(1900, 1, 1),
+    before: ->(obj) { Date.today },
+    allow_blank: true
+  }
 
   def password=(raw_password)
     if raw_password.kind_of?(String)
