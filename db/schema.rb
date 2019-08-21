@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_09_073640) do
+ActiveRecord::Schema.define(version: 2019_08_21_125549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,19 @@ ActiveRecord::Schema.define(version: 2019_04_09_073640) do
     t.index ["family_name_kana", "given_name_kana"], name: "index_customers_on_family_name_kana_and_given_name_kana"
   end
 
+  create_table "phones", force: :cascade do |t|
+    t.bigint "customer_id", null: false
+    t.bigint "address_id"
+    t.string "number", null: false
+    t.string "number_for_index", null: false
+    t.boolean "primary", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["address_id"], name: "index_phones_on_address_id"
+    t.index ["customer_id"], name: "index_phones_on_customer_id"
+    t.index ["number_for_index"], name: "index_phones_on_number_for_index"
+  end
+
   create_table "staff_events", force: :cascade do |t|
     t.bigint "staff_member_id", null: false
     t.string "type", null: false
@@ -83,5 +96,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_073640) do
   end
 
   add_foreign_key "addresses", "customers"
+  add_foreign_key "phones", "addresses"
+  add_foreign_key "phones", "customers"
   add_foreign_key "staff_events", "staff_members"
 end

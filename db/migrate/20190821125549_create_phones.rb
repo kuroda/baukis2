@@ -10,8 +10,6 @@ class CreatePhones < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    add_index :phones, :customer_id
-    add_index :phones, :address_id
     add_index :phones, :number_for_index
     add_foreign_key :phones, :customers
     add_foreign_key :phones, :addresses
