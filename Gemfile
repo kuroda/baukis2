@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "~> 2.5"
 
-gem "rails", "~> 6.0.0.beta3"
+gem "rails", "~> 6.0.0"
 gem "pg", ">= 0.18", "< 2.0"
 gem "puma", "~> 3.11"
 gem "jbuilder", git: "https://github.com/rails/jbuilder"
@@ -32,7 +32,7 @@ end
 group :test do
   gem "capybara", ">= 2.15"
   gem "selenium-webdriver"
-  gem "webdrivers", "~> 3.0"
+  gem "webdriver"
 
   %w[rspec-core rspec-expectations rspec-mocks rspec-support].each do |lib|
     gem lib, :git => "https://github.com/rspec/#{lib}.git", branch: "master"

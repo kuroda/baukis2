@@ -1,6 +1,8 @@
 import Rails from "rails-ujs";
 Rails.start();
 
+import "../staff/customer_form.js";
+
 import "../stylesheets/shared/errors.scss";
 
 import "../stylesheets/staff/layout.scss";
