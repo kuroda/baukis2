@@ -1,7 +1,7 @@
 class Phone < ApplicationRecord
   include StringNormalizer
 
-  belongs_to :customer
+  belongs_to :customer, optional: true
   belongs_to :address, optional: true
 
   before_validation do
