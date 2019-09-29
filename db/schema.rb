@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_01_000000) do
+ActiveRecord::Schema.define(version: 2019_01_01_000001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "administrators", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "hashed_password"
+    t.boolean "suspended", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "staff_members", force: :cascade do |t|
     t.string "email", null: false
@@ -27,6 +35,7 @@ ActiveRecord::Schema.define(version: 2019_01_01_000000) do
     t.boolean "suspended", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index "lower((email)::text)", name: "index_staff_members_on_LOWER_email", unique: true
     t.index "lower((email)::text)", name: "index_staff_members_on_lower_email", unique: true
     t.index ["family_name_kana", "given_name_kana"], name: "index_staff_members_on_family_name_kana_and_given_name_kana"
   end
