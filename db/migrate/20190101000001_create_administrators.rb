@@ -8,6 +8,6 @@ class CreateAdministrators < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    add_index :staff_members, "LOWER(email)", unique: true
+    add_index :administrators, "LOWER(email)", unique: true
   end
 end

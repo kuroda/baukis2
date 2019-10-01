@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_01_01_000001) do
     t.boolean "suspended", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index "lower((email)::text)", name: "index_administrators_on_LOWER_email", unique: true
   end
 
   create_table "staff_members", force: :cascade do |t|
@@ -36,7 +37,6 @@ ActiveRecord::Schema.define(version: 2019_01_01_000001) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index "lower((email)::text)", name: "index_staff_members_on_LOWER_email", unique: true
-    t.index "lower((email)::text)", name: "index_staff_members_on_lower_email", unique: true
     t.index ["family_name_kana", "given_name_kana"], name: "index_staff_members_on_family_name_kana_and_given_name_kana"
   end
 
