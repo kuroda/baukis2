@@ -14,7 +14,7 @@ class Staff::SessionsController < Staff::Base
       staff_member =
         StaffMember.find_by("LOWER(email) = ?", @form.email.downcase)
     end
-    if staff_member
+    if Staff::Authenticator.new(staff_member).authenticate(@form.password)
       session[:staff_member_id] = staff_member.id
       redirect_to :staff_root
     else
