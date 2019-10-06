@@ -1,5 +1,5 @@
 <header>
-  <span class="logo-mark">BAUKIS2</span>
+  <%= link_to "BAUKIS2", :admin_root, class: "logo-mark" %>
   <%=
     if current_administrator
       link_to "ログアウト", :admin_session, method: :delete
