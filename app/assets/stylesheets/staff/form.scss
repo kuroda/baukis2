@@ -1,0 +1,46 @@
+@import "colors";
+@import "dimensions";
+
+div#wrapper {
+  div#container {
+    div#generic-form {
+      width: 480px;
+      margin: $wide * 2 auto;
+      padding: $wide * 2;
+      border-radius: $wide;
+      border: solid 4px $dark_cyan;
+      background-color: $very_light_gray;
+
+      form {
+        div {
+          padding: $wide;
+          label {
+            display: block;
+            padding: $moderate 0;
+          }
+          label.required:after {
+            content: "*";
+            padding-left: $narrow;
+            color: $red;
+          }
+        }
+        div.notes {
+          text-align: right;
+          font-size: $small;
+          span.mark { color: $red }
+        }
+        div.check-boxes {
+          label {
+            display: inline-block;
+          }
+        }
+        div.buttons {
+          text-align: center;
+          input[type="submit"] {
+            padding: $wide $wide * 2;
+          }
+        }
+      }
+    }
+  }
+}
