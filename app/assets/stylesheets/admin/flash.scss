@@ -1,0 +1,20 @@
+@import "colors";
+@import "dimensions";
+
+header {
+  span.notice, span.alert {
+    display: inline-block;
+    padding: $narrow $moderate;
+    margin: 0 $wide;
+    font-size: $tiny;
+    color: $very_light_gray;
+  }
+
+  span.notice {
+    background-color: $green;
+  }
+
+  span.alert {
+    background-color: $red;
+  }
+}
