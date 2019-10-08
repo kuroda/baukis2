@@ -21,9 +21,7 @@ Rails.application.routes.draw do
 
   constraints host: config[:customer][:host] do
     namespace :customer, path: config[:customer][:path] do
-      namespace :customer do
-        root "top#index"
-      end
+      root "top#index"
     end
   end
 end
