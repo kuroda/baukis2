@@ -6,6 +6,8 @@
     <%= link_to "新規登録", :new_admin_staff_member %>
   </div>
 
+  <%= paginate @staff_members %>
+
   <table class="listing">
     <tr>
       <th>氏名</th>
@@ -34,6 +36,8 @@
       </tr>
     <% end %>
   </table>
+
+  <%= paginate @staff_members %>
 
   <div class="links">
     <%= link_to "新規登録", :new_admin_staff_member %>
