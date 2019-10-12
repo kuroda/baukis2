@@ -1,4 +1,4 @@
-<% 
+<%
   if @staff_member
     full_name = @staff_member.family_name + @staff_member.given_name
     @title = "#{full_name}さんのログイン・ログアウト記録"
@@ -12,6 +12,8 @@
   <div class="links">
     <%= link_to "職員一覧", :admin_staff_members %>
   </div>
+
+  <%= paginate @events %>
 
   <table class="listing">
     <tr>
@@ -27,6 +29,8 @@
       </tr>
     <% end %>
   </table>
+
+  <%= paginate @events %>
 
   <div class="links">
     <%= link_to "職員一覧", :admin_staff_members %>
