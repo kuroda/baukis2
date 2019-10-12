@@ -1,4 +1,4 @@
-@import "colors"; 
+@import "colors";
 @import "dimensions";
 
 div#wrapper {
@@ -39,6 +39,12 @@ div#wrapper {
           input[type="submit"] {
             padding: $wide $wide * 2;
           }
+        }
+        div.field_with_errors {
+          display: inline;
+          padding: 0;
+          label { color: $red; }
+          input { background-color: $pink; }
         }
       }
     }
