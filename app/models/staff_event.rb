@@ -1,0 +1,2 @@
+class StaffEvent < ApplicationRecord
+end
