@@ -4,6 +4,7 @@ class StaffMember < ApplicationRecord
   has_many :events, class_name: "StaffEvent", dependent: :destroy
 
   before_validation do
+    self.email = normalize_as_email(email)
     self.family_name = normalize_as_name(family_name)
     self.given_name = normalize_as_name(given_name)
     self.family_name_kana = normalize_as_furigana(family_name_kana)
@@ -12,6 +13,7 @@ class StaffMember < ApplicationRecord
 
   KATAKANA_REGEXP = /\A[\p{katakana}\u{30fc}]+\z/
 
+  validates :email, presence: true, "valid_email_2/email": true
   validates :family_name, :given_name, presence: true
   validates :family_name_kana, :given_name_kana, presence: true,
     format: { with: KATAKANA_REGEXP, allow_blank: true }
