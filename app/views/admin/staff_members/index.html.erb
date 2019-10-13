@@ -26,7 +26,7 @@
         <td class="email"><%= m.email %></td>
         <td class="date"><%= m.start_date.strftime("%Y/%m/%d") %></td>
         <td class="date"><%= m.end_date.try(:strftime, "%Y/%m/%d") %></td>
-        <td class="boolean">【<%= p.suspended_mark %>】</td>
+        <td class="boolean"><%= p.suspended_mark %></td>
         <td class="actions">
           <%= link_to "編集", [ :edit, :admin, m ] %> |
           <%= link_to "Events", [ :admin, m, :staff_events ] %> |
