@@ -18,6 +18,7 @@ gem "rails-i18n"
 gem "kaminari"
 gem "date_validator"
 gem "valid_email2"
+gem "nokogiri"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
