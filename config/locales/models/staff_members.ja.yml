@@ -1,0 +1,24 @@
+ja:
+  activerecord:
+    attributes:
+      staff_member:
+        email: メールアドレス
+        family_name: 氏名（姓）
+        given_name: 氏名（名）
+        family_name_kana: フリガナ（姓）
+        given_name_kana: フリガナ（名）
+        start_date: 開始日
+        end_date: 終了日
+    errors:
+      models:
+        staff_member:
+          attributes:
+            email:
+              taken: が他の職員と重複しています。
+            start_date:
+              after_or_equal_to: には2000年1月1日以降の日付を指定してください。
+              before: には1年後の日付より前の日付を指定してください。
+            end_date:
+              after_or_equal_to: には2000年1月1日以降の日付を指定してください。
+              before: には1年後の日付より前の日付を指定してください。
+              after: には開始日より後の日付を指定してください。
