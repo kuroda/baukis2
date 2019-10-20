@@ -1,0 +1,35 @@
+<% @title = "顧客詳細情報" %> 
+<h1><%= @title %></h1>
+
+<div class="table-wrapper">
+  <table class="attributes">
+    <tr><th colspan="2">基本情報</th></tr>
+    <% p1 = CustomerPresenter.new(@customer, self) %>
+    <tr><th>氏名</th><td><%= p1.full_name %></td></tr>
+    <tr><th>フリガナ</th><td><%= p1.full_name_kana %></td></tr>
+    <tr><th>生年月日</th><td class="date"><%= p1.birthday %></td></tr>
+    <tr><th>性別</th><td><%= p1.gender %></td></tr>
+    <tr><th>登録日時</th><td class="date"><%= p1.created_at %></td></tr>
+    <tr><th>更新日時</th><td class="date"><%= p1.updated_at %></td></tr>
+    <% if @customer.home_address %>
+      <% p2 = AddressPresenter.new(@customer.home_address, self) %>
+      <tr><th colspan="2">自宅住所</th></tr>
+      <tr><th>郵便番号</th><td><%= p2.postal_code %></td></tr>
+      <tr><th>都道府県</th><td><%= p2.prefecture %></td></tr>
+      <tr><th>市区町村</th><td><%= p2.city %></td></tr>
+      <tr><th>町域、番地等</th><td><%= p2.address1 %></td></tr>
+      <tr><th>建物名、部屋番号等</th><td><%= p2.address2 %></td></tr>
+    <% end %>
+    <% if @customer.work_address %>
+      <% p3 = AddressPresenter.new(@customer.work_address, self) %>
+      <tr><th colspan="2">勤務先</th></tr>
+      <tr><th>会社名</th><td><%= p3.company_name %></td></tr>
+      <tr><th>部署名</th><td><%= p3.division_name %></td></tr>
+      <tr><th>郵便番号</th><td><%= p3.postal_code %></td></tr>
+      <tr><th>都道府県</th><td><%= p3.prefecture %></td></tr>
+      <tr><th>市区町村</th><td><%= p3.city %></td></tr>
+      <tr><th>町域、番地等</th><td><%= p3.address1 %></td></tr>
+      <tr><th>建物名、部屋番号等</th><td><%= p3.address2 %></td></tr>
+    <% end %>
+  </table>
+</div>
