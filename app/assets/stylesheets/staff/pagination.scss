@@ -1,0 +1,28 @@
+@import "colors";
+@import "dimensions";
+
+nav.pagination {
+  margin: $moderate 0;
+  padding: $moderate 0;
+  display: inline-block;
+  border-top: solid $very_light_gray 1px;
+  border-bottom: solid $very_light_gray 1px;
+  span.page, span.first, span.prev, span.next, span.last {
+    display: inline-block; 
+    background-color: $light_gray;
+    padding: $narrow $moderate;
+    a {
+      text-decoration: none;
+    }
+  }
+  span.current {
+    background-color: $dark_gray;
+    color: $light_gray;
+  }
+  span.disabled {
+    color: $gray;
+  }
+  span.gap {
+    background-color: transparent;
+  }
+}
