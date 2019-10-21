@@ -1,4 +1,6 @@
 class Customer < ApplicationRecord
+  include PersonalNameHolder
+
   has_one :home_address, dependent: :destroy, autosave: true
   has_one :work_address, dependent: :destroy, autosave: true
 
