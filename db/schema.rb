@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 2019_01_01_000004) do
 
   create_table "customers", force: :cascade do |t|
     t.string "email", null: false
-    t.string "email_for_index", null: false
     t.string "family_name", null: false
     t.string "given_name", null: false
     t.string "family_name_kana", null: false
@@ -52,7 +51,7 @@ ActiveRecord::Schema.define(version: 2019_01_01_000004) do
     t.string "hashed_password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["email_for_index"], name: "index_customers_on_email_for_index", unique: true
+    t.index "lower((email)::text)", name: "index_customers_on_LOWER_email", unique: true
     t.index ["family_name_kana", "given_name_kana"], name: "index_customers_on_family_name_kana_and_given_name_kana"
   end
 
