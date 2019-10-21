@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    attributes:
+      address:
+        postal_code: 郵便番号
+        prefecture: 都道府県
+        city: 市区町村
+        address1: 町域、番地等
+        address2: 建物名、部屋番号等
+      work_address:
+        company_name: 会社名
+        division_name: 部署名

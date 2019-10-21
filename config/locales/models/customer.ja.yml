@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    attributes:
+      customer:
+        email: メールアドレス
+        password: パスワード
+        family_name: 氏名（姓）
+        given_name: 氏名（名）
+        family_name_kana: フリガナ（姓）
+        given_name_kana: フリガナ（名）
+        birthday: 生年月日
+        gender: 性別
+    errors:
+      models:
+        customer:
+          attributes:
+            email:
+              taken: が他の顧客と重複しています。
+            birthday:
+              after_or_equal_to: には1900年1月1日以降の日付を指定してください。
+              before: が未来の日付です。
