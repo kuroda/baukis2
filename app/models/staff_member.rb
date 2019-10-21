@@ -1,16 +1,9 @@
 class StaffMember < ApplicationRecord
-  include StringNormalizer
   include EmailHolder
   include PersonalNameHolder
 
   has_many :events, class_name: "StaffEvent", dependent: :destroy
 
-  before_validation do
-    self.email = normalize_as_email(email)
-  end
-
-  validates :email, presence: true, "valid_email_2/email": true,
-    uniqueness: { case_sensitive: false }
   validates :start_date, presence: true, date: {
     after_or_equal_to: Date.new(2000, 1, 1),
     before: -> (obj) { 1.year.from_now.to_date },
