@@ -32,7 +32,7 @@ div#wrapper {
           font-size: $small;
           span.mark { color: $red }
         }
-        div.check-boxes {
+        div.check-boxes, div.radio-buttons {
           label {
             display: inline-block;
           }
