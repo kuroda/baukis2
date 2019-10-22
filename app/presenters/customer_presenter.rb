@@ -1,4 +1,4 @@
-class CustomerPresenter < ModelPresenter 
+class CustomerPresenter < ModelPresenter
   delegate :email, to: :object
 
   def full_name
@@ -23,5 +23,9 @@ class CustomerPresenter < ModelPresenter
     else
       ""
     end
+  end
+
+  def personal_phones
+    object.personal_phones.map(&:number)
   end
 end
