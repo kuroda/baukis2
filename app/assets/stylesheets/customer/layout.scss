@@ -1,0 +1,36 @@
+@import "colors";
+@import "dimensions";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+div#wrapper {
+  position: relative;
+  box-sizing: border-box;
+  min-height: 100%;
+  margin: 0 auto;
+  padding-bottom: ($wide + $moderate) * 2 + $standard_line_height;
+  background-color: $gray;
+}
+header {
+  padding: $moderate;
+  background-color: $dark_yellow;
+  color: $very_light_gray;
+  span.logo-mark {
+    font-weight: bold;
+  }
+}
+footer {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  background-color: $dark_gray;
+  color: $light_gray;
+  p {
+    text-align: center;
+    padding: $moderate;
+    margin: 0;
+  }
+}
