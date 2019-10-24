@@ -21,6 +21,10 @@ header {
   span.logo-mark {
     font-weight: bold;
   }
+  a {
+    float: right;
+    color: $very_light_gray;
+  }
 }
 footer {
   bottom: 0;
