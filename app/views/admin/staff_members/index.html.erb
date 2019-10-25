@@ -1,0 +1,40 @@
+<% @title = "職員管理" %>
+<h1><%= @title %></h1>
+
+<div class="table-wrapper">
+  <div class="links">
+    <%= link_to "新規登録", :new_admin_staff_member %>
+  </div>
+
+  <table class="listing">
+    <tr>
+      <th>氏名</th>
+      <th>フリガナ</th>
+      <th>メールアドレス</th>
+      <th>入社日</th>
+      <th>退職日</th>
+      <th>停止フラグ</th>
+      <th>アクション</th>
+    </tr>
+    <% @staff_members.each do |m| %>
+      <tr>
+        <td><%= m.family_name %> <%= m.given_name %></td>
+        <td><%= m.family_name_kana %> <%= m.given_name_kana %></td>
+        <td class="email"><%= m.email %></td>
+        <td class="date"><%= m.start_date.strftime("%Y/%m/%d") %></td>
+        <td class="date"><%= m.end_date.try(:strftime, "%Y/%m/%d") %></td>
+        <td class="boolean">
+          <%= m.suspended? ? raw("&#x2611;") : raw("&#x2610;") %></td>
+        <td class="actions">
+          <%= link_to "編集", [ :edit, :admin, m ] %> |
+          <%= link_to "削除", [ :admin, m ], method: :delete,
+            data: { confirm: "本当に削除しますか？" } %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <div class="links">
+    <%= link_to "新規登録", :new_admin_staff_member %>
+  </div>
+</div>
