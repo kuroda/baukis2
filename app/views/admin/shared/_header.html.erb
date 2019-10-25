@@ -1,5 +1,5 @@
 <header>
-  <span class="logo-mark">BAUKIS2</span>
+  <%= link_to "BAUKIS2", :admin_root, class: "logo-mark" %>
   <%= content_tag(:span, flash.notice, class: "notice") if flash.notice %>
   <%= content_tag(:span, flash.alert, class: "alert") if flash.alert %>
   <%=
