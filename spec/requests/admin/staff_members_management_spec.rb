@@ -1,7 +1,21 @@
 require "rails_helper"
 
+describe "管理者によるログイン管理", "ログイン前" do
+  include_examples "a protected admin controller", "admin/staff_members"
+end
+
 describe "管理者による職員管理" do
   let(:administrator) { create(:administrator) }
+
+  before do
+    post admin_session_url,
+      params: {
+        admin_login_form: {
+          email: administrator.email,
+          password: "pw"
+        }
+      }
+  end
 
   describe "新規登録" do
     let(:params_hash) { attributes_for(:staff_member) }
