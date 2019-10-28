@@ -1,0 +1,42 @@
+@import "colors";
+@import "dimensions";
+
+div.table-wrapper {
+  width: 90%;
+  margin: 0 auto;
+
+  div.links {
+    text-align: right;
+    padding: $moderate;
+  }
+
+  table {
+    margin: $moderate auto 0;
+    border: solid $moderate $very_dark_cyan;
+    tr {
+      th {
+        background-color: $dark_gray;
+        color: $very_light_gray;
+      }
+      th, td { padding: $narrow }
+      td.email, td.date { font-family: monospace; }
+      td.boolean { text-align: center; }
+      td.actions {
+        text-align: center;
+        color: $dark_gray;
+      }
+    }
+  }
+
+  table.listing {
+    width: 100%;
+    tr:nth-child(even) { background-color: $very_light_gray }
+    tr:nth-child(odd) { background-color: $light_gray }
+  }
+
+  table.attributes {
+    width: 100%;
+    th { padding-right: $moderate; width: 200px; }
+    td { background-color: $very_light_gray; }
+  }
+}

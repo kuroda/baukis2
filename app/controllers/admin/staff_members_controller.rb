@@ -17,7 +17,7 @@ class Admin::StaffMembersController < Admin::Base
   end
 
   def create
-    @staff_member = StaffMember.new(params[:staff_member])
+    @staff_member = StaffMember.new(staff_member_params)
     if @staff_member.save
       flash.notice = "職員アカウントを新規登録しました。"
       redirect_to :admin_staff_members
@@ -28,13 +28,21 @@ class Admin::StaffMembersController < Admin::Base
 
   def update
     @staff_member = StaffMember.find(params[:id])
-    @staff_member.assign_attributes(params[:staff_member])
+    @staff_member.assign_attributes(staff_member_params)
     if @staff_member.save
       flash.notice = "職員アカウントを更新しました。"
       redirect_to :admin_staff_members
     else
       render action: "edit"
     end
+  end
+
+  private def staff_member_params
+    params.require(:staff_member).permit(
+      :email, :password, :family_name, :given_name,
+      :family_name_kana, :given_name_kana,
+      :start_date, :end_date, :suspended
+    )
   end
 
   def destroy
