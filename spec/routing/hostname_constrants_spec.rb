@@ -1,9 +1,8 @@
 require "rails_helper"
 
 describe "ルーティング" do
-  let(:config) { Rails.application.config.baukis2 }
-
   example "職員トップページ" do
+    config = Rails.application.config.baukis2
     url = "http://#{config[:staff][:host]}/#{config[:staff][:path]}"
     expect(get: url).to route_to(
       host: config[:staff][:host],
@@ -13,6 +12,7 @@ describe "ルーティング" do
   end
 
   example "管理者ログインフォーム" do
+    config = Rails.application.config.baukis2
     url = "http://#{config[:admin][:host]}/#{config[:admin][:path]}/login"
     expect(get: url).to route_to(
       host: config[:admin][:host],
@@ -35,6 +35,7 @@ describe "ルーティング" do
   end
 
   example "存在しないパスならroutableではない" do
+    config = Rails.application.config.baukis2
     expect(get: "http://#{config[:staff][:host]}/xyz").not_to be_routable
   end
 end
