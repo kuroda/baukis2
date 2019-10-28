@@ -1,0 +1,12 @@
+<% @title = "アカウント情報編集" %>
+<h1><%= @title %></h1>
+
+<div id="generic-form">
+  <%= form_for @staff_member, url: :staff_account do |f| %>
+    <%= render "form", f: f %>
+    <div class="buttons">
+      <%= f.submit "更新" %>
+      <%= link_to "キャンセル", :staff_account %>
+    </div>
+  <% end %>
+</div>
