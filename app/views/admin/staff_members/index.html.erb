@@ -27,6 +27,7 @@
           <%= m.suspended? ? raw("&#x2611;") : raw("&#x2610;") %></td>
         <td class="actions">
           <%= link_to "編集", [ :edit, :admin, m ] %> |
+          <%= link_to "Events", [ :admin, m, :staff_events ] %> |
           <%= link_to "削除", [ :admin, m ], method: :delete,
             data: { confirm: "本当に削除しますか？" } %>
         </td>
