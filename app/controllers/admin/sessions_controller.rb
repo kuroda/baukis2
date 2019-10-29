@@ -22,6 +22,7 @@ class Admin::SessionsController < Admin::Base
         render action: "new"
       else
         session[:administrator_id] = administrator.id
+        session[:admin_last_access_time] = Time.current
         flash.notice = "ログインしました。"
         redirect_to :admin_root
       end
