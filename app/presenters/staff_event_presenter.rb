@@ -1,5 +1,5 @@
 class StaffEventPresenter < ModelPresenter
-  delegate :member, :description, :occuerred_at, to: :object
+  delegate :member, :description, :occurred_at, to: :object
 
   def table_row
     markup(:tr) do |m|
