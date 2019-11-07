@@ -9,5 +9,13 @@
     end
     m << p.date_field_block(:birthday, "生年月日")
     m << p.gender_field_block
+    m.div(class: "input-block") do
+      m << p.decorated_label(:personal_phones, "電話番号")
+      m.ol do
+        p.object.personal_phones.each_with_index do |phone, index|
+          m << render("phone_fields", f: ff, phone: phone, index: index)
+        end
+      end
+    end
   end %>
 <% end %>
