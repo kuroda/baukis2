@@ -27,7 +27,7 @@ div#wrapper {
         div.notes {
           text-align: right;
           font-size: $small;
-          span.mark { color: $red }
+          span.mark { color: $red; }
         }
         div.check-boxes, div.radio-buttons {
           label {
