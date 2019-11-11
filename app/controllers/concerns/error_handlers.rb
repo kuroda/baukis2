@@ -14,6 +14,7 @@ module ErrorHandlers
   end
 
   private def rescue403(e)
+    @exception = e
     render "errors/forbidden", status: 403
   end
 
