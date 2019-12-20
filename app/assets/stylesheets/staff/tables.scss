@@ -21,6 +21,7 @@ div.table-wrapper {
       th, td { padding: $narrow }
       td.email, td.date, td.password, td.ip { font-family: monospace; }
       td.boolean { text-align: center; }
+      td.numeric { text-align: right; }
       td.actions {
         text-align: center;
         color: $dark_gray;
