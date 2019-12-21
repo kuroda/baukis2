@@ -17,15 +17,8 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
-  config.filter_run_excluding :performance => true
   config.include FactoryBot::Syntax::Methods
   config.include ActiveSupport::Testing::TimeHelpers
-
-  config.before(performance: true) do
-    ActionController::Base.perform_caching = true
-    ActiveSupport::Dependencies.mechanism = :require
-    Rails.logger.level = ActiveSupport::Logger::INFO
-  end
 
   config.before do
     Rails.application.config.baukis2[:restrict_ip_addresses] = false
