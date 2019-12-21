@@ -1,0 +1,22 @@
+<% @title = "プログラム詳細情報" %>
+<h1><%= @title %></h1>
+
+<div class="table-wrapper">
+  <table class="attributes">
+    <% p = ProgramPresenter.new(@program, self) %>
+    <tr><th>タイトル</th><td><%= p.title %></td></tr>
+    <tr><th>申し込み開始日</th>
+      <td class="date"><%= p.application_start_time %></td></tr>
+    <tr><th>申し込み終了日</th>
+      <td class="date"><%= p.application_end_time %></td></tr>
+    <tr><th>最小参加者数</th>
+      <td class="numeric"><%= p.min_number_of_participants %></td></tr>
+    <tr><th>最大参加者数</th>
+      <td class="numeric"><%= p.max_number_of_participants %></td></tr>
+    <tr><th>申し込み件数</th>
+      <td class="numeric"><%= p.number_of_applicants %></td></tr>
+    <tr><th>登録職員</th><td><%= p.registrant %></td></tr>
+  </table>
+
+  <div class="description"><%= @program.description %></div>
+</div>
