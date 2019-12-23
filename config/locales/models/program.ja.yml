@@ -1,0 +1,25 @@
+ja:
+  activerecord:
+    attributes:
+      program:
+        title: タイトル
+        description: 詳細
+        application_start_time: 申し込み開始日時
+        application_start_date: 申し込み開始日
+        application_end_time: 申し込み終了日時
+        application_end_date: 申し込み終了日
+        min_number_of_participants: 最小参加者数
+        max_number_of_participants: 最大参加者数
+    errors:
+      models:
+        program:
+          attributes:
+            application_start_time:
+              after_or_equal_to: には2000年1月1日以降の日付を指定してください。
+              before: には現在から1年後までの日時を指定してください。
+            application_end_time:
+              after_or_equal_to: には2000年1月1日以降の日付を指定してください。
+              before: には申し込み開始日時から90日以内の日時を指定してください。
+              after: には申し込み開始日時よりも後の日時を指定してください。
+            max_number_of_participants:
+              less_than_min_number: には最小参加者数以上の数を指定してください。

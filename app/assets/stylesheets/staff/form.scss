@@ -23,6 +23,7 @@ div#wrapper {
             padding-left: $narrow;
             color: $red;
           }
+          span.instruction { font-size: $small; color: $dark_gray; }
         }
         div.input-block {
           input { margin-right: $narrow * 2; }
@@ -50,7 +51,11 @@ div#wrapper {
           display: inline;
           padding: 0;
           label { color: $red; }
-          input { background: $pink; }
+          input, textarea { background: $pink; }
+        }
+        div.with-errors {
+          label { color: $red; }
+          input, select { background: $pink; }
         }
         div.error-message {
           color: $red;
