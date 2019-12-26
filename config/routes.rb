@@ -9,7 +9,11 @@ Rails.application.routes.draw do
       resource :account, except: [ :new, :create, :destroy ]
       resource :password, only: [ :show, :edit, :update ]
       resources :customers
-      resources :programs
+      resources :programs do
+        resources :entries, only: [] do
+          patch :update_all, on: :collection
+        end
+      end
     end
   end
 
