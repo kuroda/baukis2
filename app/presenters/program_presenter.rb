@@ -1,6 +1,7 @@
 class ProgramPresenter < ModelPresenter
   delegate :title, :description, to: :object
-  delegate :number_with_delimiter, to: :view_context
+  delegate :number_with_delimiter, :current_customer, :button_to,
+    to: :view_context
 
   def application_start_time
     object.application_start_time.strftime("%Y-%m-%d %H:%M")
@@ -31,10 +32,17 @@ class ProgramPresenter < ModelPresenter
   end
 
   def apply_or_cancel_button
-    closed = object.application_end_time < Time.current
-    label_text = closed ? "募集終了" : "申し込む"
-    button_to label_text, [ :customer, object, :entries ],
-      disabled: closed, method: :post,
-      data: { confirm: "本当に申し込みますか？" }
+    if entry = object.entries.where(customer_id: current_customer.id).first
+      label_text = entry.canceled? ? "キャンセル済み" : "キャンセルする"
+      button_to label_text, [ :cancel, :customer, object, entry ],
+        disabled: entry.canceled?, method: :patch,
+        data: { confirm: "本当にキャンセルしますか？" }
+    else
+      closed = object.application_end_time.try(:<, Time.current)
+      label_text = closed ? "募集終了" : "申し込む"
+      button_to label_text, [ :customer, object, :entries ],
+        disabled: closed, method: :post,
+        data: { confirm: "本当に申し込みますか？" }
+    end
   end
 end
