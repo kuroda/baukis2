@@ -29,4 +29,12 @@ class ProgramPresenter < ModelPresenter
   def registrant
     object.registrant.family_name + " " + object.registrant.given_name
   end
+
+  def apply_or_cancel_button
+    closed = object.application_end_time < Time.current
+    label_text = closed ? "募集終了" : "申し込む"
+    button_to label_text, [ :customer, object, :entries ],
+      disabled: closed, method: :post,
+      data: { confirm: "本当に申し込みますか？" }
+  end
 end
