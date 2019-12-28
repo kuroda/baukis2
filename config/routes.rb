@@ -38,8 +38,8 @@ Rails.application.routes.draw do
       get "login" => "sessions#new", as: :login
       resource :session, only: [ :create, :destroy ]
       resources :programs, only: [ :index, :show ] do
-        resources :entries, only: [ :create ] do
-          patch :cancel, on: :member
+        resource :entry, only: [ :create ] do
+          patch :cancel
         end
       end
     end
