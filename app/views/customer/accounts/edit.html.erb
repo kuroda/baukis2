@@ -3,10 +3,10 @@
 
 <div id="generic-form">
   <%= form_with model: @customer_form, scope: "form",
-        url: :customer_account do |f| %>
+        url: :confirm_customer_account do |f| %>
     <%= render "form", f: f %>
     <div class="buttons">
-      <%= f.submit "更新" %>
+      <%= f.submit "確認画面へ進む" %>
       <%= link_to "キャンセル", :customer_account %>
     </div>
   <% end %>

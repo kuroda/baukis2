@@ -13,6 +13,7 @@ function toggle_work_address_fields() {
 }
 
 $(document).on("ready turbolinks:load", () => {
+  if ($("div.confirming").length) return;
   toggle_home_address_fields();
   toggle_work_address_fields();
   $("input#form_inputs_home_address").on("click", () => {

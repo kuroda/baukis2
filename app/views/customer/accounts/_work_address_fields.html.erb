@@ -1,6 +1,7 @@
 <%= f.fields_for :work_address, f.object.customer.work_address do |ff| %>
   <%= markup do |m|
-    p = AddressFormPresenter.new(ff, self)
+    p = confirming ? ConfirmingAddressFormPresenter.new(ff, self) :
+      AddressFormPresenter.new(ff, self)
     m << p.text_field_block(:company_name, "会社名", size: 40, required: true)
     m << p.text_field_block(:division_name, "部署名", size: 40)
     m << p.postal_code_block(:postal_code, "郵便番号", size: 7)
@@ -13,7 +14,12 @@
       m << p.decorated_label(:work_phones, "電話番号")
       m.ol do
         p.object.phones.each_with_index do |phone, index|
-          m << render("phone_fields", f: ff, phone: phone, index: index)
+          if confirming
+            m << render("confirming_phone_fields", f: ff, phone: phone,
+              index: index)
+          else
+            m << render("phone_fields", f: ff, phone: phone, index: index)
+          end
         end
       end
     end
