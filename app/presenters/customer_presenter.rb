@@ -6,7 +6,7 @@ class CustomerPresenter < ModelPresenter
   end
 
   def full_name_kana
-    object.family_name_kana + " " + object.given_name
+    object.family_name_kana + " " + object.given_name_kana
   end
 
   def created_at
