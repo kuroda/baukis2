@@ -1,4 +1,4 @@
-class Customer::MessagesController < ApplicationController
+class Customer::MessagesController < Customer::Base
   def new
     @message = CustomerMessage.new
   end
@@ -6,9 +6,11 @@ class Customer::MessagesController < ApplicationController
   # POST
   def confirm
     @message = CustomerMessage.new(customer_message_params)
+    @message.customer = current_customer
     if @message.valid?
       render action: "confirm"
     else
+      raise @message.errors.full_messages.join(", ")
       flash.now.alert = "入力に誤りがあります。"
       render action: "new"
     end

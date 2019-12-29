@@ -16,6 +16,9 @@ Rails.application.routes.draw do
           patch :update_all, on: :collection
         end
       end
+      resources :messages, only: [] do
+        get :count, on: :collection
+      end
     end
   end
 
