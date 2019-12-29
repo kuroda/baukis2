@@ -14,7 +14,7 @@ class ConfirmingFormPresenter
   end
 
   def text_field_block(name, label_text, options = {})
-    markup(:div, class: "input-block") do |m|
+    markup(:div) do |m|
       m << decorated_label(name, label_text, options)
       if options[:disabled]
         m.div(object.send(name), class: "field-value readonly")
@@ -26,7 +26,7 @@ class ConfirmingFormPresenter
   end
 
   def date_field_block(name, label_text, options = {})
-    markup(:div, class: "input-block") do |m|
+    markup(:div) do |m|
       m << decorated_label(name, label_text, options)
       m.div(object.send(name), class: "field-value")
       m << hidden_field(name, options)
@@ -34,9 +34,20 @@ class ConfirmingFormPresenter
   end
 
   def drop_down_list_block(name, label_text, choices, options = {})
-    markup(:div, class: "input-block") do |m|
+    markup(:div) do |m|
       m << decorated_label(name, label_text, options)
       m.div(object.send(name), class: "field-value")
+      m << hidden_field(name, options)
+    end
+  end
+
+  def text_area_block(name, label_text, options = {})
+    markup(:div) do |m|
+      m << decorated_label(name, label_text, options)
+      value = object.send(name)
+      m.div(class: "field-value") do
+        m << ERB::Util.html_escape(value).gsub(/\n/, "<br>")
+      end
       m << hidden_field(name, options)
     end
   end
