@@ -1,0 +1,13 @@
+<% @title = "新規問い合わせ（確認）" %>
+<h1><%= @title %></h1>
+
+<div id="generic-form">
+  <%= form_with model: @message, url: :customer_messages do |f| %>
+    <%= render "confirming_form", f: f %>
+    <div class="buttons">
+      <%= f.submit "送信" %>
+      <%= f.submit "訂正", name: "correct" %>
+      <%= link_to "キャンセル", :customer_root %>
+    </div>
+  <% end %>
+</div>

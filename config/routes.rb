@@ -16,6 +16,9 @@ Rails.application.routes.draw do
           patch :update_all, on: :collection
         end
       end
+      resources :messages, only: [] do
+        get :count, on: :collection
+      end
     end
   end
 
@@ -46,6 +49,9 @@ Rails.application.routes.draw do
         resource :entry, only: [ :create ] do
           patch :cancel
         end
+      end
+      resources :messages, only: [ :new, :create ] do
+        post :confirm, on: :collection
       end
     end
   end
