@@ -9,6 +9,10 @@ class ConfirmingFormPresenter
     @view_context = view_context
   end
 
+  def notes
+    ""
+  end
+
   def text_field_block(name, label_text, options = {})
     markup(:div, class: "input-block") do |m|
       m << decorated_label(name, label_text, options)
