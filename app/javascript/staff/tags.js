@@ -1,7 +1,7 @@
 require("jquery-ui")
 require("tag-it")
 
-$(document).on("ready turbolinks:load", () => {
+$(document).on("turbolinks:load", () => {
   if ($("#tag-it").length) {
     const messageId = $("#tag-it").data("message-id")
     const path = $("#tag-it").data("path")

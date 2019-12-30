@@ -2,11 +2,7 @@
 <h1><%= @title %></h1>
 
 <div class="table-wrapper">
-  <% if @message.kind_of?(CustomerMessage) %>
-    <div class="links">
-      <%= link_to "返信する", new_staff_message_reply_path(@message) %>
-    </div>
-  <% end %>
+  <%= render "links" %>
 
   <table class="attributes">
     <% p = MessagePresenter.new(@message, self) %>
