@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_01_000015) do
+ActiveRecord::Schema.define(version: 2019_01_01_000017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,16 @@ ActiveRecord::Schema.define(version: 2019_01_01_000015) do
     t.index ["program_id", "customer_id"], name: "index_entries_on_program_id_and_customer_id", unique: true
   end
 
+  create_table "message_tag_links", force: :cascade do |t|
+    t.bigint "message_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["message_id", "tag_id"], name: "index_message_tag_links_on_message_id_and_tag_id", unique: true
+    t.index ["message_id"], name: "index_message_tag_links_on_message_id"
+    t.index ["tag_id"], name: "index_message_tag_links_on_tag_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.bigint "customer_id", null: false
     t.bigint "staff_member_id"
@@ -170,6 +180,13 @@ ActiveRecord::Schema.define(version: 2019_01_01_000015) do
     t.datetime "updated_at", precision: 6, null: false
     t.index "lower((email)::text)", name: "index_staff_members_on_LOWER_email", unique: true
     t.index ["family_name_kana", "given_name_kana"], name: "index_staff_members_on_family_name_kana_and_given_name_kana"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "value", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["value"], name: "index_tags_on_value", unique: true
   end
 
   add_foreign_key "addresses", "customers"

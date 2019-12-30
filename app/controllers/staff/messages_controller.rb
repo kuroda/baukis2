@@ -38,4 +38,17 @@ class Staff::MessagesController <  Staff::Base
     flash.notice = "問い合わせを削除しました。"
     redirect_back(fallback_location: :staff_root)
   end
+
+  # POST/DELETE
+  def tag
+    message = CustomerMessage.find(params[:id])
+    if request.post?
+      message.add_tag(params[:label])
+    elsif request.delete?
+      message.remove_tag(params[:label])
+    else
+      raise
+    end
+    render plain: "OK"
+  end
 end

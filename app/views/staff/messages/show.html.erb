@@ -15,6 +15,17 @@
     <tr><th>受信者</th><td><%= p.receiver %></td></tr>
     <tr><th>件名</th><td><%= p.subject %></td></tr>
     <tr><th>作成日時</th><td class="date"><%= p.created_at %></td></tr>
+    <tr>
+      <th>タグ</th>
+      <td>
+        <%= markup(:ul, id: "tag-it", "data-message-id" => @message.id,
+            "data-path" => tag_staff_message_path(@message)) do |m|
+          @message.tags.each do |tag|
+            m.li tag.value
+          end
+        end %>
+      </td>
+    </tr>
   </table>
 
   <div class="tree"><%= p.tree %></div>
