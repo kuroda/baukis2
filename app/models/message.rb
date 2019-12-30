@@ -5,6 +5,7 @@ class Message < ApplicationRecord
     optional: true
   belongs_to :parent, class_name: "Message", foreign_key: "parent_id",
     optional: true
+  has_many :children, class_name: "Message", foreign_key: "parent_id"
 
   validates :subject, :body, presence: true
   validates :subject, length: { maximum: 80, allow_blank: true }

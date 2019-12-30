@@ -28,6 +28,10 @@ class Staff::MessagesController <  Staff::Base
     render plain: CustomerMessage.unprocessed.count
   end
 
+  def show
+    @message = Message.find(params[:id])
+  end
+
   def destroy
     message = CustomerMessage.find(params[:id])
     message.update_column(:deleted, true)
