@@ -19,6 +19,9 @@ Rails.application.routes.draw do
       resources :messages, only: [] do
         get :count, on: :collection
       end
+      resources :messages, only: [ :index, :show, :destroy ] do
+        get :inbound, :outbound, :deleted, :count, on: :collection
+      end
     end
   end
 
