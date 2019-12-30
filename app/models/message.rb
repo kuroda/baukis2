@@ -10,7 +10,7 @@ class Message < ApplicationRecord
   validates :subject, length: { maximum: 80, allow_blank: true }
   validates :body, length: { maximum: 800, allow_blank: true }
 
-  before_create do
+  before_validation do
     if parent
       self.customer = parent.customer
       self.root = parent.root || parent
