@@ -17,7 +17,9 @@ class Message < ApplicationRecord
     end
   end
 
-  default_scope { order(created_at: :desc) }
+  scope :not_deleted, -> { where(deleted: false) }
+  scope :deleted, -> { where(deleted: true) }
+  scope :sorted, -> { order(created_at: :desc) }
 
   attr_accessor :child_nodes
 
