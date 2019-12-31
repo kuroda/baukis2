@@ -1,0 +1,24 @@
+<% @title = "受信メッセージ一覧" %>
+<h1><%= @title %></h1>
+
+<div class="table-wrapper">
+  <%= paginate @messages %>
+
+  <table class="listing">
+    <tr>
+      <th>送信者</th>
+      <th>件名</th>
+      <th>作成日時</th>
+    </tr>
+    <% @messages.each do |m| %>
+      <% p = MessagePresenter.new(m, self) %>
+      <tr>
+        <td><%= p.sender %></td>
+        <td><%= p.truncated_subject %></td>
+        <td><%= p.created_at %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= paginate @messages %>
+</div>
