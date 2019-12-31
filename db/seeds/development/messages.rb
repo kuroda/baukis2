@@ -23,8 +23,8 @@ s = 2.years.ago
       customer: r.customer,
       root: m,
       parent: r,
-      subject: "これは返信への返信です。",
-      body: "これは返信への返信です。",
+      subject: "これは返信への回答です。",
+      body: "これは返信への回答です。",
       created_at: s.advance(months: n, hours: 2)
     )
     StaffMessage.create!(
@@ -32,8 +32,8 @@ s = 2.years.ago
       staff_member: staff_members.sample,
       root: m,
       parent: m2,
-      subject: "これは返信の返信への返信です。",
-      body: "これは返信の返信への返信です。",
+      subject: "これは回答への返信です。",
+      body: "これは回答への返信です。",
       created_at: s.advance(months: n, hours: 3)
     )
   end
