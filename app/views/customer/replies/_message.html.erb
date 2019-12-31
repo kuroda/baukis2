@@ -1,0 +1,8 @@
+<% p = MessagePresenter.new(@message, self) %>
+<table class="attributes">
+  <% p = MessagePresenter.new(@message, self) %>
+  <tr><th>送信者</th><td><%= p.sender %></td></tr>
+  <tr><th>件名</th><td><%= p.subject %></td></tr>
+  <tr><th>作成日時</th><td class="date"><%= p.created_at %></td></tr>
+</table>
+<div class="body"><%= p.formatted_body %></div>

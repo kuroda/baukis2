@@ -2,6 +2,10 @@
 <h1><%= @title %></h1>
 
 <div class="table-wrapper">
+  <div class="links">
+    <%= link_to "回答する", new_customer_message_reply_path(@message) %>
+  </div>
+
   <table class="attributes">
     <% p = MessagePresenter.new(@message, self) %>
     <tr><th>送信者</th><td><%= p.sender %></td></tr>
