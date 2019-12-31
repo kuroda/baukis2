@@ -1,5 +1,5 @@
 class Staff::MessagesController <  Staff::Base
-  before_action :reject_non_xhr, only: [ :count ]
+  before_action :reject_non_xhr, only: [ :count, :tag ]
 
   def index
     @messages = Message.not_deleted.sorted.page(params[:page])
