@@ -3,6 +3,10 @@ class Customer::MessagesController < Customer::Base
     @messages = current_customer.inbound_messages.sorted.page(params[:page])
   end
 
+  def show
+    @message = current_customer.inbound_messages.find(params[:id])
+  end
+
   def new
     @message = CustomerMessage.new
   end
