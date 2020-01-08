@@ -1,0 +1,13 @@
+@import "colors";
+@import "dimensions";
+
+form.search {
+  padding: $wide;
+  border: solid $dark_gray 1px;
+  background-color: $very_light_gray;
+  div.input-block {
+    display: inline-block;
+    margin: $moderate $very_wide $moderate 0;
+    label { margin-right: $moderate; }
+  }
+}
