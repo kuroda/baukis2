@@ -1,0 +1,8 @@
+@import "colors";
+@import "dimensions";
+
+div.description {
+  margin: $wide;
+  padding: $wide;
+  background-color: $very_light_gray;
+}
