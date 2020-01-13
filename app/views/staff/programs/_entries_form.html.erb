@@ -1,0 +1,53 @@
+<%
+entries = @program.entries.includes(:customer).order("entries.id").to_a
+cols = 4
+rows = entries.size / cols
+rows += 1 unless entries.size % cols == 0
+%>
+<table class="entries">
+  <tr>
+    <% cols.times do %>
+    <th></th>
+    <th>⽒名</th>
+    <th>A</th>
+    <th>C</th>
+    <% end %>
+  </tr>
+  <% rows.times do |i| %>
+  <tr>
+    <% cols.times do |j| %>
+      <% index = i * cols + j %>
+      <% e = entries[index] || break %>
+      <%= markup(:div, class: "entry") do |m|
+        m.th index + 1
+        m.td e.customer.family_name + " " + e.customer.given_name
+        m.td do
+          attributes = { type: "checkbox", class: "approved"}
+          attributes["data-entry-id"] = e.id
+          attributes[:checked] = "checked" if e.approved?
+          m.input attributes
+        end
+        m.td do
+          attributes = { type: "checkbox", class: "canceled"}
+          attributes["data-entry-id"] = e.id
+          attributes[:checked] = "checked" if e.canceled?
+          m.input attributes
+        end
+      end %>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
+
+<div class="button-wrapper">
+  <%= form_with model: Staff::EntriesForm.new(@program), scope: "form",
+    url: [ :update_all, :staff, @program, :entries ],
+    html: { method: :patch } do |f| %>
+    <%= f.hidden_field :approved %>
+    <%= f.hidden_field :not_approved %>
+    <%= f.hidden_field :canceled %>
+    <%= f.hidden_field :not_canceled %>
+    <%= button_tag "申し込みのフラグを更新する", type: "button",
+      id: "update-entries-button" %>
+  <% end %>
+</div>
