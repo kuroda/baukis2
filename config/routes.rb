@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resource :account, except: [ :new, :create, :destroy ]
       resource :password, only: [ :show, :edit, :update ]
       resources :customers
+      resources :programs
     end
   end
 
