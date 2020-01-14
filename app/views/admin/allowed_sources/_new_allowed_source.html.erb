@@ -1,0 +1,11 @@
+<%= form_with model: @new_allowed_source,
+  url: [ :admin, @new_allowed_source ] do |f| %>
+  <div>
+    <%= f.label(:octet1, "新規許可IPアドレス") %>
+    <%= f.text_field(:octet1, size: 3) %>
+    <%= f.text_field(:octet2, size: 3) %>
+    <%= f.text_field(:octet3, size: 3) %>
+    <%= f.text_field(:last_octet, size: 3) %>
+    <%= f.submit "追加" %>
+  </div>
+<% end %>
