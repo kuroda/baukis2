@@ -23,6 +23,7 @@ div#wrapper {
             padding-left: $narrow;
             color: $red;
           }
+          span.instruction { font-size: $small; color: $dark_gray; }
         }
         div.input-block {
           input { margin-right: $narrow * 2; }
