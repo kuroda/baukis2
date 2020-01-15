@@ -4,6 +4,6 @@ class Staff::ProgramsController < Staff::Base
   end
 
   def show
-    @program = Program.listing.params[:id]
+    @program = Program.listing.find(params[:id])
   end
 end
