@@ -1,0 +1,20 @@
+<%= @title = "プログラム一覧" %>
+<h1><%= @title %></h1>
+
+<div class="table-wrapper">
+  <%= paginate @programs %>
+
+  <table class="listing">
+    <tr>
+      <th>タイトル</th>
+      <th>申し込み開始日時</th>
+      <th>申し込み終了日時</th>
+      <th>最小参加者数</th>
+      <th>最大参加者数</th>
+      <th>アクション</th>
+    </tr>
+    <%= render partial: "program", collection: @programs %>
+  </table>
+
+  <%= paginate @programs %>
+</div>
