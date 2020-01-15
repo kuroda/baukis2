@@ -20,4 +20,6 @@
   </table>
 
   <div class="description"><%= p.description %></div>
+
+  <%= render "entries_form" if @program.number_of_applicants > 0 %>
 </div>
