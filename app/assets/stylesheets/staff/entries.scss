@@ -1,0 +1,21 @@
+@import "colors";
+@import "dimensions";
+
+div.table-wrapper {
+  table.entries {
+    tr:nth-child(1) {
+      th { text-align: center; }
+    }
+    tr {
+      th:nth-child(4n+1) {
+        padding: $moderate; width: 30px; text-align: right;
+      }
+      td { background-color: $very_light_gray; }
+    }
+  }
+  div.button-wrapper {
+    margin: $wide;
+    text-align: center;
+    button { padding: $moderate; }
+  }
+}
