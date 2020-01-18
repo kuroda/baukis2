@@ -1,0 +1,27 @@
+<%= f.fields_for :customer, f.object.customer do |ff| %>
+  <%= markup do |m|
+    p = confirming ? ConfirmingCustomerFormPresenter.new(ff, self) :
+      CustomerFormPresenter.new(ff, self)
+    p.with_options(required: true) do |q|
+      m << q.text_field_block(:email, "メールアドレス", size: 32,
+        disabled: true)
+      m << q.full_name_block(:family_name, :given_name, "氏名")
+      m << q.full_name_block(:family_name_kana, :given_name_kana, "フリガナ")
+    end
+    m << p.date_field_block(:birthday, "生年月日")
+    m << p.gender_field_block
+    m.div(class: "input-block") do
+      m << p.decorated_label(:personal_phones, "電話番号")
+      m.ol do
+        p.object.personal_phones.each_with_index do |phone, index|
+          if confirming
+            m << render("confirming_phone_fields", f: ff, phone: phone,
+            index: index)
+          else
+            m << render("phone_fields", f: ff, phone: phone, index: index)
+          end
+        end
+      end
+    end
+  end %>
+<% end %>
