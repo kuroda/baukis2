@@ -23,8 +23,8 @@ class Customer::AccountForm
 
   def assign_attributes(params = {})
     @params = params
-    self.inputs_home_address = params[:inputs_home_address] == "1"
-    self.inputs_work_address = params[:inputs_work_address] == "1"
+    self.inputs_home_address = params[:inputs_home_address].in? %w(1 true)
+    self.inputs_work_address = params[:inputs_work_address].in? %w(1 true)
 
     customer.assign_attributes(customer_params)
     phones = phone_params(:customer).fetch(:phones)

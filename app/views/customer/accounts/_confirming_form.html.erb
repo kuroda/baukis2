@@ -1,0 +1,22 @@
+<fieldset id="customer-fields">
+  <legend>基本情報</legend>
+  <%= render "customer_fields", f: f, confirming: true %>
+</fieldset>
+<% if f.object.inputs_home_address %>
+  <div>
+    <%= f.hidden_field :inputs_home_address %>
+  </div>
+  <fieldset id="home-address-fields">
+    <legend>⾃宅住所</legend>
+    <%= render "home_address_fields", f: f, confirming: true %>
+  </fieldset>
+<% end %>
+<% if f.object.inputs_work_address %>
+  <div>
+    <%= f.hidden_field :inputs_work_address %>
+  </div>
+  <fieldset id="work-address-fields">
+    <legend>勤務先</legend>
+    <%= render "work_address_fields", f: f, confirming: true %>
+  </fieldset>
+<% end %>
