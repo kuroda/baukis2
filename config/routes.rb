@@ -6,7 +6,9 @@ Rails.application.routes.draw do
       root "top#index"
       get "login" => "sessions#new", as: :login
       resource :session, only: [ :create, :destroy ]
-      resource :account, except: [ :new, :create, :destroy ]
+      resource :account, except: [ :new, :create, :destroy ] do
+        patch :confirm
+      end
       resource :password, only: [ :show, :edit, :update ]
       resources :customers
       resources :programs do
