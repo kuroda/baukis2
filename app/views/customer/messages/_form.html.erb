@@ -1,0 +1,11 @@
+<%= markup do |m|
+  p = FormPresenter.new(f, self)
+  p.with_options(required: true) do |q|
+    m << q.text_field_block(:subject, "件名", size: 40, maxlength: 80)
+    m.div(class: "input-block") do |m|
+      m << q.decorated_label(:body, "本⽂")
+      m << q.text_area(:body, rows: 6, style: "width: 454px")
+      m.span "（800⽂字以内）", class: "instruction", style: "float: right"
+    end
+  end
+end %>
