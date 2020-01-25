@@ -16,4 +16,8 @@ class Message < ApplicationRecord
       self.root = parent.root || parent
     end
   end
+
+  scope :not_deleted, -> { where(deleted: false) }
+  scope :deleted, -> { where(deleted: true) }
+  scope :sorted, -> { order(created_at: :desc) }
 end
