@@ -4,4 +4,12 @@
 <ul class="menu">
   <li><%= link_to "顧客管理", :staff_customers %></li>
   <li><%= link_to "プログラム管理", :staff_programs %></li>
+  <li>メッセージ管理
+    <ul>
+      <li><%= link_to "問い合わせ⼀覧", :inbound_staff_messages %></li>
+      <li><%= link_to "返信⼀覧", :outbound_staff_messages %></li>
+      <li><%= link_to "全メッセージ⼀覧", :staff_messages %></li>
+      <li><%= link_to "ゴミ箱", :deleted_staff_messages %></li>
+    </ul>
+  </li>
 </ul>

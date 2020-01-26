@@ -1,7 +1,7 @@
 @import "colors";
 @import "dimensions";
 
-div.description {
+div.description, div.body {
   margin: $wide;
   padding: $wide;
   background-color: $very_light_gray;
