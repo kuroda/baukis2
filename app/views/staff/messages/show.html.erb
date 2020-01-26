@@ -7,6 +7,7 @@
       <%= link_to "返信する", new_staff_message_reply_path(@message) %>
     </div>
   <% end %>
+
   <table class="attributes">
     <% p = MessagePresenter.new(@message, self) %>
     <tr><th>種類</th><td><%= p.type %></td></tr>
@@ -14,6 +15,17 @@
     <tr><th>受信者</th><td><%= p.receiver %></td></tr>
     <tr><th>件名</th><td><%= p.subject %></td></tr>
     <tr><th>作成⽇時</th><td class="date"><%= p.created_at %></td></tr>
+    <tr>
+      <th>タグ</th>
+      <td>
+        <%= markup(:ul, id: "tag-it", "data-message-id" => @message.id,
+            "data-path" => tag_staff_message_path(@message)) do |m|
+          @message.tags.each do |tag|
+            m.li tag.value
+          end
+        end %>
+      </td>
+    </tr>
   </table>
 
   <div class="tree"><%= p.tree %></div>
