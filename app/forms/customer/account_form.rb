@@ -2,7 +2,7 @@ class Customer::AccountForm
   include ActiveModel::Model
 
   attr_accessor :customer, :inputs_home_address, :inputs_work_address
-  delegate :persisted?, :save, to: :customer
+  delegate :persisted?, :valid?, :save, to: :customer
 
   def initialize(customer)
     @customer = customer
