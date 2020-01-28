@@ -1,0 +1,71 @@
+@import "colors";
+@import "dimensions";
+
+div#wrapper {
+  div#container {
+    div#generic-form {
+      width: 480px;
+      margin: $wide * 2 auto;
+      padding: $wide * 2;
+      border-radius: $wide;
+      border: solid 4px $dark_yellow;
+      background-color: $very_light_gray;
+
+      form {
+        div {
+          padding: $wide;
+          label {
+            display: block;
+            padding: $moderate 0;
+          }
+          label.required:after {
+            content: "*";
+            padding-left: $narrow;
+            color: $red;
+          }
+          span.instruction { font-size: $small; color: $dark_gray; }
+          div.field-value { margin-left: $wide; font-weight: bold; }
+          div.readonly { color: $dark_gray; }
+          span.field-value { font-weight: bold; }
+        }
+        div.input-block {
+          input { margin-right: $narrow * 2; }
+        }
+        div.notes {
+          text-align: right;
+          font-size: $small;
+          span.mark { color: $red }
+        }
+        div.check-boxes, div.radio-buttons {
+          label {
+            display: inline-block;
+          }
+        }
+        input[type="checkbox"] + label {
+          display: inline-block;
+        }
+        div.buttons {
+          text-align: center;
+          input[type="submit"] {
+            padding: $wide $wide * 2;
+          }
+        }
+        div.field_with_errors {
+          display: inline;
+          padding: 0;
+          label { color: $red; }
+          input { background: $pink; }
+        }
+        div.with-errors {
+          label { color: $red; }
+          input { background-color: $pink; }
+        }
+        div.error-message {
+          color: $red;
+          font-size: $small;
+          padding: 0 $very_wide;
+        }
+      }
+    }
+  }
+}

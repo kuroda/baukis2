@@ -1,5 +1,6 @@
 <%= markup do |m|
-  p = StaffMemberFormPresenter.new(f, self)
+  p = confirming ? ConfirmingUserFormPresenter.new(f, self) :
+    StaffMemberFormPresenter.new(f, self)
   m << p.notes
   p.with_options(required: true) do |q|
     m << q.text_field_block(:email, "メールアドレス", size: 32)

@@ -1,0 +1,9 @@
+<%= f.fields_for :phones, phone, index: index do |ff| %>
+  <%= markup(:li) do |m|
+    text = ff.object.number
+    text += " （優先）" if ff.object.primary?
+    m.span(text, class: "field-value")
+    m << ff.hidden_field(:number)
+    m << ff.hidden_field(:primary)
+  end %>
+<% end %>
