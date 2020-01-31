@@ -18,6 +18,16 @@ Rails.application.routes.draw do
       end
       resources :messages, only: [:index, :show, :destroy] do
         get :inbound, :outbound, :deleted, :count, on: :collection
+        post :tag, on: :member
+        delete :tag, on: :member
+        resource :reply, only: [ :new, :create ] do
+          post :confirm
+        end
+      end
+      resources :tags, only: [] do
+        resources :messages, only: [ :index ] do
+          get :inbound, :outbound, :deleted, on: :collection
+        end
       end
     end
   end
@@ -50,8 +60,11 @@ Rails.application.routes.draw do
           patch :cancel
         end
       end
-      resources :messages, only: [ :new, :create ] do
+      resources :messages, except: [ :edit, :update ] do
         post :confirm, on: :collection
+        resource :reply, only: [ :new, :create ] do
+          post :confirm
+        end
       end
     end
   end

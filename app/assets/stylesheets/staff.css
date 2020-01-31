@@ -1,4 +1,6 @@
 /*
  *= require_tree ./shared
  *= require_tree ./staff
+ *= require jquery-ui-dist/jquery-ui
+ *= require tag-it/css/jquery.tagit
  */

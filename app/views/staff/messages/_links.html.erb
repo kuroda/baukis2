@@ -1,0 +1,9 @@
+<div class="links">
+  <%= link_to "問い合わせ⼀覧", :inbound_staff_messages %>
+  <%= link_to "返信⼀覧", :outbound_staff_messages %>
+  <%= link_to "全メッセージ⼀覧", :staff_messages %>
+  <%= link_to "ゴミ箱", :deleted_staff_messages %>
+  <% if @message.kind_of?(CustomerMessage) %>
+    <%= link_to "返信する", new_staff_message_reply_path(@message) %>
+  <% end %>
+</div>
