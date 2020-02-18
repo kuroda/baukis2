@@ -15,4 +15,8 @@ class Message < ApplicationRecord
 
   validates :subject, presence: true, length: { maximum: 80 }
   validates :body, presence: true, length: { maximum: 800 }
+
+  scope :not_deleted, -> { where(deleted: false) }
+  scope :deleted, -> { where(deleted: true) }
+  scope :sorted, -> { order(created_at: :desc) }
 end

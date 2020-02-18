@@ -1,0 +1,43 @@
+<%
+@title =
+  case params[:action]
+  when "index"; "全メッセージ一覧"
+  when "inbound"; "問い合わせ一覧"
+  when "outbound"; "返信一覧"
+  when "deleted"; "メッセージ一覧（ゴミ箱）"
+  else; raise
+  end
+%>
+<h1><%= @title %></h1>
+
+<div class="table-wrapper">
+  <%= paginate @messages %>
+
+  <table class="listing">
+    <tr>
+      <th>種類</th>
+      <th>送信者</th>
+      <th>受信者</th>
+      <th>件名</th>
+      <th>作成日時</th>
+      <th>アクション</th>
+    </tr>
+    <% @messages.each do |m| %>
+      <% p = MessagePresenter.new(m, self) %>
+      <tr>
+        <td><%= p.type %></td>
+        <td><%= p.sender %></td>
+        <td><%= p.receiver %></td>
+        <td><%= p.truncated_subject %></td>
+        <td><%= p.created_at %></td>
+        <td class="actions">
+          <%= link_to "詳細", staff_message_path(m) %>
+          <%= link_to_if m.kind_of?(CustomerMessage), "削除",
+            staff_message_path(m), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= paginate @messages %>
+</div>
