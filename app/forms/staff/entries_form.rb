@@ -30,14 +30,14 @@ class Staff::EntriesForm
     not_canceled_entry_ids = @not_canceled.split(":").map(&:to_i)
 
     ActiveRecord::Base.transaction do
-      @program.entries.where(id: approved_entry_ids).
-        update_all(approved: true) if approved_entry_ids.present?
-      @program.entries.where(id: not_approved_entry_ids).
-        update_all(approved: false) if not_approved_entry_ids.present?
-      @program.entries.where(id: canceled_entry_ids).
-        update_all(canceled: true) if canceled_entry_ids.present?
-      @program.entries.where(id: not_canceled_entry_ids).
-        update_all(canceled: false) if not_canceled_entry_ids.present?
+      @program.entries.where(id: approved_entry_ids)
+        .update_all(approved: true) if approved_entry_ids.present?
+      @program.entries.where(id: not_approved_entry_ids)
+        .update_all(approved: false) if not_approved_entry_ids.present?
+      @program.entries.where(id: canceled_entry_ids)
+        .update_all(canceled: true) if canceled_entry_ids.present?
+      @program.entries.where(id: not_canceled_entry_ids)
+        .update_all(canceled: false) if not_canceled_entry_ids.present?
     end
   end
 end
