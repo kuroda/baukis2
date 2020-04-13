@@ -1,0 +1,22 @@
+<%= markup do |m|
+  p = ProgramFormPresenter.new(f, self)
+
+  m << p.notes
+  m << p.text_field_block(:title, "タイトル", maxlength: 32, required: true)
+
+  p.with_options(required: true) do |q|
+    m << q.datetime_field_block(:application_start, "申し込み開始⽇時",
+      instruction: "現在から1年後まで")
+    m << q.datetime_field_block(:application_end, "申し込み終了⽇時",
+      instruction: "開始⽇時から90⽇後まで")
+    end
+
+  p.with_options(size: 6) do |q|
+    m << q.number_field_block(:min_number_of_participants, "最⼩参加者数",
+      max: 1000)
+    m << q.number_field_block(:max_number_of_participants, "最⼤参加者数",
+      max: 1000)
+  end
+
+  m << p.description
+end %>
