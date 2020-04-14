@@ -1,0 +1,14 @@
+<% @title = "問い合わせへの返信（確認）" %>
+<h1><%= @title %></h1>
+
+<div id="generic-form" class="table-wrapper">
+  <%= form_with model: @reply, url: staff_message_reply_path(@message) do |f| %>
+    <%= render "confirming_form", f: f %>
+    <div class="buttons">
+      <%= f.submit "送信" %>
+      <%= f.submit "訂正", name: "correct" %>
+      <%= link_to "キャンセル", :staff_messages %>
+    </div>
+  <% end %>
+  <%= render "message" %>
+</div>

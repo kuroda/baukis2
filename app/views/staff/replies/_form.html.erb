@@ -1,0 +1,8 @@
+<%= markup do |m|
+  p = FormPresenter.new(f, self)
+  p.with_options(required: true) do |q|
+    m << q.text_field_block(:subject, "件名", size: 40, maxlength: 80)
+    m << q.text_area_block(:body, "本文", rows: 6, maxlength: 800,
+      style: "width: 454px")
+  end
+end %>
