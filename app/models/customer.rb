@@ -4,6 +4,11 @@ class Customer < ApplicationRecord
   include PasswordHolder
 
   has_many :addresses, dependent: :destroy
+  has_many :messages
+  has_many :outbound_messages, class_name: "CustomerMessage",
+    foreign_key: "customer_id"
+  has_many :inbound_messages, class_name: "StaffMessage",
+    foreign_key: "customer_id"
   has_one :home_address, autosave: true
   has_one :work_address, autosave: true
   has_many :phones, dependent: :destroy
@@ -11,7 +16,7 @@ class Customer < ApplicationRecord
     class_name: "Phone", autosave: true
   has_many :entries, dependent: :destroy
   has_many :programs, through: :entries
-  
+
   validates :gender, inclusion: { in: %w(male female), allow_blank: true }
   validates :birthday, date: {
     after: Date.new(1900, 1, 1),
