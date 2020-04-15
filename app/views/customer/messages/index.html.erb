@@ -1,0 +1,30 @@
+<% @title = "受信メッセージ一覧" %>
+<h1><%= @title %></h1>
+
+<div class="table-wrapper">
+  <%= paginate @messages %>
+
+  <table class="listing">
+    <tr>
+      <th>送信者</th>
+      <th>件名</th>
+      <th>作成日時</th>
+      <th>アクション</th>
+    </tr>
+    <% @messages.each do |m| %>
+      <% p = MessagePresenter.new(m, self) %>
+      <tr>
+        <td><%= p.sender %></td>
+        <td><%= p.truncated_subject %></td>
+        <td><%= p.created_at %></td>
+        <td class="actions">
+          <%= link_to "詳細", customer_message_path(m) %>
+          <%= link_to "削除", customer_message_path(m), method: :delete,
+               data: { confirm: "本当に削除しますか？" } %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= paginate @messages %>
+</div>

@@ -1,0 +1,16 @@
+<% @title = "メッセージ詳細" %>
+<h1><%= @title %></h1>
+
+<div class="table-wrapper">
+  <div class="links">
+    <%= link_to "回答する", new_customer_message_reply_path(@message) %>
+  </div>
+  <table class="attributes">
+    <% p = MessagePresenter.new(@message, self) %>
+    <tr><th>送信者</th><td><%= p.sender %></td></tr>
+    <tr><th>件名</th><td><%= p.subject %></td></tr>
+    <tr><th>作成⽇時</th><td class="date"><%= p.created_at %></td></tr>
+  </table>
+
+  <div class="body"><%= p.formatted_body %></div>
+</div>
