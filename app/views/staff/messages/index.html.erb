@@ -11,6 +11,8 @@
 <h1><%= @title %></h1>
 
 <div class="table-wrapper">
+  <%= render "links" %>
+  
   <%= paginate @messages %>
 
   <table class="listing">
@@ -40,4 +42,6 @@
   </table>
 
   <%= paginate @messages %>
+
+  <%= render "tags" %>
 </div>

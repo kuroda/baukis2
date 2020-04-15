@@ -1,0 +1,12 @@
+<div class="tags">
+  タグ：
+  <% Tag.all.each do |tag| %>
+    <% if tag.id == params[:tag_id].to_i %>
+      <span class="current_tag"><%= tag.value %></span>
+    <% elsif params[:action] == "index" %>
+      <%= link_to tag.value, [ :staff, tag, :messages ] %>
+    <% else %>
+      <%= link_to tag.value, [ params[:action], :staff, tag, :messages ] %>
+    <% end %>
+  <% end %>
+</div>
